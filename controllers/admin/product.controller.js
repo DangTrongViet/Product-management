@@ -146,9 +146,6 @@ module.exports.createPost=async (req,res)=>{
         req.body.position=parseInt(req.body.position);
         
     }
-    if(req.file){
-        req.body.thumbnail=`/admin/uploads/${req.file.filename}`;
-    }
     //luưu vô db
     //nếu gửi bằng form thì dùng req.body để lấy dữ liệu trong form.
     const product=new Product(req.body);
