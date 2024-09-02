@@ -177,3 +177,36 @@ if(uploadImage){
 
 }
 // End upload Image
+
+
+//Sort
+const sort=document.querySelector("[sort]");
+if(sort){
+    let url=new URL(location.href);
+    const sortSelect=sort.querySelector("[sort-select]");
+    const sortClear=sort.querySelector("[sort-clear]");
+    sortSelect.addEventListener("change",(e)=>{
+        const [key,value]=e.target.value.split("-");
+        url.searchParams.set("sortKey",key);
+        url.searchParams.set("sortValue",value);
+        location.href=url.href;
+    });
+    sortClear.addEventListener("click",()=>{
+        url.searchParams.delete("sortKey");
+        url.searchParams.delete("sortValue");
+        location.href=url.href;
+    })
+
+    // Thêm selected cho option
+    const sortKey=url.searchParams.get("sortKey");
+    const sortValue=url.searchParams.get("sortValue");
+
+    if(sortKey&&sortValue){
+        const stringSort=`${sortKey}-${sortValue}`;
+        const optionSelected=sortSelect.querySelector(`option[value='${stringSort}']`);
+        //nếu mà thuộc tính mặc định .key luôn k cần setAttribute.
+        optionSelected.setAttribute("selected",true);
+    }
+}
+
+// End Sort
