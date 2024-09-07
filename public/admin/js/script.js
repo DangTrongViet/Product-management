@@ -210,3 +210,14 @@ if(sort){
 }
 
 // End Sort
+
+
+document.getElementById('toggleSiderBtn').addEventListener('click', function() {
+    // Tìm phần tử sider và nội dung chính
+    const sider = document.querySelector('.sider');
+    const mainContent = document.querySelector('.main-content');
+    
+    // Thêm hoặc xóa class collapsed
+    sider.classList.toggle('collapsed');
+    mainContent.classList.toggle('collapsed');
+});

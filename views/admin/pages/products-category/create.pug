@@ -3,13 +3,14 @@ extends ../../layouts/default.pug
 include ../../mixins/alert.pug
 include ../../mixins/select-tree.pug
 block main
+
     .main-content
         +alert-error(5000)
         
         h1(class="mb-4") Thêm mới sản phẩm
 
         form(
-            action=`${prefixAdmin}/products/create`
+            action=`${prefixAdmin}/products-category/create`
             id="form-create-product"
             method="POST"
             enctype="multipart/form-data"
@@ -25,13 +26,14 @@ block main
                 )
             div(class="form-group")
                 label(for="parent_id") Danh mục cha
-                select(
-                    name="product_category_id"
-                    id="product_category_id"
-                    class="form-control"    
-                )
-                    option(value="") -- Chọn danh mục cha --
-                        +select-tree(category)
+            select(
+                name="parent_id"
+                id="parent_id"
+                class="form-control"    
+            )
+                option(value="") -- Chọn danh mục cha --
+                +select-tree(records)
+                
             div(class="form-group")
                 label(for="description") Mô tả
                 textarea(
@@ -39,54 +41,6 @@ block main
                     id="description"
                     name="description"
                     rows="5"
-                )
-            //- div(class="form-group")
-            //-     label(for="description") Nội dung
-            //-     textarea(
-            //-         class="form-control textarea-mce"
-            //-         id="content"
-            //-         name="content"
-            //-         rows="5"
-            //-     )
-            //- div(class="form-group")
-            //-     label(for="description") Nội dung 2
-            //-     textarea(
-            //-         class="form-control"
-            //-         id="content"
-            //-         name="content"
-            //-         rows="5"
-            //-     )
-            div(class="form-group")
-                label(for="price") Giá
-                input(
-                    type="number"
-                    class="form-control"
-                    id="price"
-                    name="price"
-                    value="0"
-                    min="0"
-                    
-                )
-            div(class="form-group")
-                label(for="discount") % Giảm giá
-                input(
-                    type="number"
-                    class="form-control"
-                    id="discount"
-                    name="discountPercentage"
-                    value="0"
-                    min="0"
-                )
-            div(class="form-group")
-                label(for="stock") Số lượng
-                input(
-                    type="number"
-                    class="form-control"
-                    id="stock"
-                    name="stock"
-                    value="0"
-                    min="0"
-                
                 )
             div(class="form-group"
                     upload-image

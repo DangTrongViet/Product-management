@@ -1,15 +1,10 @@
 extends ../../layouts/default
 
 block main
+    
     .main-content
         if(product.title)
             h1(class="mb-4") #{product.title}
-        if(product.price)
-            h1(class="mb-4") Giá: <b>#{product.price}$</b>
-        if(product.discountPercentage)
-            h1(class="mb-4") Giảm giá <b>#{product.discountPercentage}%</b>
-        if(product.stock)
-            h1(class="mb-4") Còn lại <b>#{product.stock}</b>
         if(product.thumbnail)
             div(class="mb-4")
                 img(
@@ -31,7 +26,7 @@ block main
             div(class="mb-4") !{product.description}
 
         a(
-            href=`${prefixAdmin}/products/edit/${product.id}`
+            href=`${prefixAdmin}/products-category/edit/${product.id}`
             class="btn btn-warning "
         ) Chỉnh sửa
         

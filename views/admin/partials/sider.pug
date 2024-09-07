@@ -1,9 +1,21 @@
-.sider Sider
+.sider
+    button#toggleSiderBtn.btn.btn-outline-light
+        i.fas.fa-bars
     .inner-menu 
-        ul 
-            li 
-                a(href=`${prefixAdmin}/dashboard`) Tổng quan
-            li
-                a(href=`${prefixAdmin}/products`) Sản phẩm
-            li
-                a(href=`${prefixAdmin}/products/recycleBin`) Thư mục rác
+        ul.nav.flex-column
+            li.nav-item
+                a.nav-link.active(href=`${prefixAdmin}/dashboard`) 
+                    i.fas.fa-tachometer-alt.me-2 Tổng quan
+            li.nav-item
+                a.nav-link(href=`${prefixAdmin}/products`) 
+                    i.fas.fa-box.me-2 Danh sách sản phẩm
+            li.nav-item    
+                a.nav-link(href=`${prefixAdmin}/products-category`) 
+                    i.fas.fa-list.me-2 Danh mục sản phẩm
+            li.nav-item
+                a.nav-link(href=`${prefixAdmin}/roles`) 
+                    i.fas.fa-users-cog.me-2 Nhóm quyền
+            li.nav-item
+                a.nav-link(href=`${prefixAdmin}/products/recycleBin`) 
+                    i.fas.fa-trash.me-2 Thư mục rác
+    script(src="/admin/js/script.js")
