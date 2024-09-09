@@ -23,13 +23,13 @@ route.get("/recycleBin", controllers_recycleBin.recycleBin);
 
 route.get("/create", controllers.create);
 route.post("/create", upload.single("thumbnail"), uploadCloud.upload,
-    validate.cretePost, controllers.createPost);
+    validate.createPost, controllers.createPost);
 
 
 route.get("/edit/:id", controllers.edit);
 
 route.patch("/edit/:id", upload.single("thumbnail"), uploadCloud.upload,
-    validate.cretePost, controllers.editPatch);
+    validate.createPost, controllers.editPatch);
 
 route.get("/detail/:id", controllers.detail);
 

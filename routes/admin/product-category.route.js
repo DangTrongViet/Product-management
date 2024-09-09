@@ -16,14 +16,14 @@ route.get("/", controller.index);
 route.get("/create", controller.create);
 route.post("/create", upload.single("thumbnail"),
     uploadCloud.upload,
-    validate.cretePost,
+    validate.createPost,
     controller.createPost
 );
 route.get("/edit/:id", controller.edit);
 
 route.patch("/edit/:id", upload.single("thumbnail"),
     uploadCloud.upload,
-    validate.cretePost,
+    validate.createPost,
     controller.editPatch);
 
 route.get("/detail/:id", controller.detail);
