@@ -3,7 +3,8 @@ const path = require('path');
 const methodOverride=require("method-override");
 const flash=require("express-flash");
 const session = require('express-session');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const moment=require("moment");
 
 
 const bodyParser=require("body-parser");
@@ -38,6 +39,7 @@ const routeAdmin=require("./routes/admin/index.route");
 //app locals val để khai báo biến toàn cục để các file pug sử dụgn biến này
 // biến là sau dấu .locals và chỉ dùng trong file pug
 app.locals.prefixAdmin=systemConfig.prefixAdmin;
+app.locals.moment=moment;
 
 database.connect();
 

@@ -24,7 +24,17 @@ const productSchema=new mongoose.Schema(
             slug: "title",
             unique:true
         },
-        deletedAt: Date,
+        createdBy:{
+            account_id: String,
+            createdAt:{
+                type: String,
+                default: Date.now
+            }
+        },
+        deletedBy:{
+            account_id:String,
+            deletedAt: Date 
+        },
         resetAt: Date
     },
     //để update các time tạo sp và sửa 

@@ -4,6 +4,7 @@ const searchHelper=require("../../helpers/search.helper");
 const paginationHelper = require("../../helpers/pagination");
 const Middlewares=require("../../middlewares/admin/uploadCloudinary.middleware");
 const ProductCategory=require("../../models/product-category.model");
+const Account=require("../../models/accounts.model");
 const systemConfig=require("../../config/system");
 const CreateTreeHelper=require("../../helpers/create.Tree");
 
@@ -22,7 +23,6 @@ module.exports.index=async (req,res)=>{
         find.title=objSearch.regax;
     }
     const countProduct=await Product.countDocuments(find);
-
 
     //Pagination
     let objPagination=paginationHelper(
@@ -53,13 +53,22 @@ module.exports.index=async (req,res)=>{
     .limit(objPagination.limitItems)
     .skip(objPagination.skip);
 
+    for(const product of products){
+        const user=await Account.findOne({
+            _id: product.createdBy.account_id,
+        })
+        if(user){
+            product.accountFullName=user.fullName;
+        }
+    }
+
 
     res.render("admin/pages/products/index",{
         pageTitle:" Trang sản phẩm",
         products:products,
         filterStatus:filterStatus,
         keyword:objSearch.keyword,
-        pagination:objPagination
+        pagination:objPagination,
         
     });
 
@@ -72,7 +81,6 @@ module.exports.index=async (req,res)=>{
 
 //[PATCH] /admin/products/change-status./status/id
 module.exports.changeStatus= async (req,res)=>{
-    console.log(req.params)
     const status=req.params.status;
     const id=req.params.id;
     await Product.updateOne({_id:id},{status:status})
@@ -99,7 +107,10 @@ module.exports.changeMulti=async (req,res)=>{
         case "delete-all":
             await Product.updateMany({_id:{ $in: ids}},
                 {deleted: true, 
-                    deletedAt: new Date()});
+                    deletedBy:{
+                        account_id: res.locals.user.id,
+                        deletedAt: new Date()
+                    }});
             req.flash("success",`Đã xóa thành công ${ids.length} sản phẩm!`);
             break;
         case "change-position":
@@ -129,9 +140,14 @@ module.exports.deleteItem=async (req,res)=>{
     // await Product.deleteOne({_id:id});
 
     //Xóa mềm.
-    await Product.updateOne({_id:id}, {deleted: true,
+    await Product.updateOne({_id:id}, 
+        {deleted: true,
         // Cập nhật trường item ngày xóa item.
-        deletedAt:new Date()}
+        deletedBy:{
+            account_id: res.locals.user.id,
+            deletedAt: new Date()
+        }
+    }
     );
     res.redirect("back");
 }
@@ -163,6 +179,9 @@ module.exports.createPost=async (req,res)=>{
     else{
         req.body.position=parseInt(req.body.position);
         
+    }
+    req.body.createdBy={
+        account_id: res.locals.user.id
     }
     //luưu vô db
     //nếu gửi bằng form thì dùng req.body để lấy dữ liệu trong form.

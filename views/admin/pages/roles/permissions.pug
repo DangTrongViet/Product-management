@@ -87,7 +87,7 @@ block main
                             each item in records
                                 td(class="text-center")
                                     input(type="checkbox")
-                        tr(data-name="roles--create")
+                        tr(data-name="roles-create")
                             td Thêm mới
                             each item in records
                                 td(class="text-center")
@@ -104,6 +104,47 @@ block main
                                     input(type="checkbox")
                         tr(data-name="roles-permissions")
                             td Phân quyền
+                            each item in records
+                                td(class="text-center")
+                                    input(type="checkbox")
+                    tr
+                        td(colspan="4")
+                            b Tài khoản
+                        tr(data-name="accounts-view")
+                            td Xem
+                            each item in records
+                                td(class="text-center")
+                                    input(type="checkbox")
+                        tr(data-name="accounts-create")
+                            td Thêm mới
+                            each item in records
+                                td(class="text-center")
+                                    input(type="checkbox")
+                        tr(data-name="accounts-edit")
+                            td Sửa
+                            each item in records
+                                td(class="text-center")
+                                    input(type="checkbox") 
+                        tr(data-name="accounts-delete")
+                            td Xóa
+                            each item in records
+                                td(class="text-center")
+                                    input(type="checkbox")
+                    tr
+                        td(colspan="4")
+                            b Thư mục rác
+                        tr(data-name="trash-view")
+                            td Xem
+                            each item in records
+                                td(class="text-center")
+                                    input(type="checkbox")
+                        tr(data-name="trash-reset")
+                            td Khôi phục
+                            each item in records
+                                td(class="text-center")
+                                    input(type="checkbox") 
+                        tr(data-name="trash-delete")
+                            td Xóa
                             each item in records
                                 td(class="text-center")
                                     input(type="checkbox")
