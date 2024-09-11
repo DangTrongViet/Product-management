@@ -1,0 +1,18 @@
+/* Ẩn các mục con */
+ul.sub-menu {
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hiển thị các mục con khi hover qua li chứa sub-menu */
+li:hover > ul.sub-menu {
+    display: block;
+}
+
+/* Thêm style cho các mục con */
+ul.sub-menu li {
+    margin-left: 20px; /* Khoảng cách thụt lề */
+}
+

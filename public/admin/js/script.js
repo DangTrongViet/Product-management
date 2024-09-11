@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
+// Thêm DOMContentLoaded để chạy file js k bị lỗi 
 document.addEventListener("DOMContentLoaded", () => {
     const buttonStatus = document.querySelectorAll("[button-status]");
     if (buttonStatus.length > 0) {
@@ -60,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const inputsId = checkboxMulti.querySelectorAll("input[name='id']");
         inputCheckAll.addEventListener("click", () => {
             inputsId.forEach(item => {
+                console.log(item);
                 item.checked = inputCheckAll.checked;
             });
         });
@@ -188,3 +190,5 @@ document.addEventListener("DOMContentLoaded", () => {
         mainContent.classList.toggle('collapsed');
     });
 })
+
+
