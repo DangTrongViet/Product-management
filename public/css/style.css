@@ -1,18 +1,151 @@
-/* Ẩn các mục con */
+/* Menu con */
 ul.sub-menu {
-    display: none;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Hiển thị các mục con khi hover qua li chứa sub-menu */
 li:hover > ul.sub-menu {
-    display: block;
+  display: block;
 }
 
-/* Thêm style cho các mục con */
 ul.sub-menu li {
-    margin-left: 20px; /* Khoảng cách thụt lề */
+  margin-left: 20px; /* Khoảng cách thụt lề cho các mục con */
 }
 
+/* Giá */
+.new-price {
+  color: #28a745; /* Màu xanh lá cây cho giá mới */
+  font-weight: bold; /* Làm giá mới nổi bật */
+  transition: color 0.3s ease; /* Hiệu ứng chuyển màu mềm mại */
+}
+
+.old-price {
+  color: #e74c3c; /* Màu đỏ cho giá cũ */
+  text-decoration: line-through; /* Gạch ngang giá cũ */
+  font-weight: normal;
+  transition: color 0.3s ease; /* Hiệu ứng chuyển màu mềm mại */
+}
+
+.new-price:hover {
+  color: #218838; /* Đổi sang màu xanh đậm hơn khi hover */
+}
+
+.old-price:hover {
+  color: #c0392b; /* Đổi sang màu đỏ đậm hơn khi hover */
+}
+
+/* Giảm giá */
+.discount {
+  color: #ff5722; /* Màu cam nổi bật cho giảm giá */
+  font-weight: bold; /* Làm chữ nổi bật */
+  background-color: #fff3e0; /* Màu nền nhẹ nhàng để làm nổi bật */
+  padding: 0.2em 0.5em; /* Thêm khoảng cách xung quanh văn bản */
+  border-radius: 4px; /* Bo tròn góc để tạo kiểu đẹp mắt */
+  font-size: 1.2em; /* Tăng kích thước chữ để làm nổi bật hơn */
+  display: inline-block; /* Đảm bảo phần giảm giá không chiếm toàn bộ chiều ngang */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển màu mượt mà */
+}
+
+.discount:hover {
+  color: #e64a19; /* Màu cam đậm hơn khi hover */
+  background-color: #ffe0b2; /* Màu nền sáng hơn khi hover */
+}
+
+.product-item {
+  border: 1px solid #ddd; /* Thêm đường viền cho sản phẩm */
+  border-radius: 8px; /* Bo tròn góc của sản phẩm */
+  padding: 1em; /* Thêm khoảng cách xung quanh nội dung sản phẩm */
+  margin-bottom: 1em; /* Thêm khoảng cách dưới mỗi sản phẩm */
+  background-color: #fff; /* Màu nền trắng cho sản phẩm */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng cho sản phẩm */
+  display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+  flex-direction: column; /* Xếp theo chiều dọc */
+  align-items: center; /* Canh giữa nội dung */
+}
+
+.inner-image {
+  width: 100%; /* Đảm bảo ảnh chiếm toàn bộ chiều rộng của phần tử */
+  height: auto; /* Giữ tỷ lệ của ảnh */
+  position: relative;
+  text-align: center; /* Đặt vị trí của ảnh làm cơ sở cho tiêu đề */
+}
+
+.inner-featured {
+  background-color: #ff9800; /* Màu nền cam để làm nổi bật */
+  color: #fff; /* Màu chữ trắng */
+  font-weight: bold; /* Đậm chữ */
+  padding: 0.2em 0.5em; /* Khoảng cách xung quanh văn bản nhỏ hơn */
+  text-align: center; /* Canh giữa văn bản */
+  border-radius: 3px; /* Bo tròn góc nhỏ */
+  position: absolute; /* Đặt tiêu đề nằm trên ảnh */
+  top: 10px; /* Đặt khoảng cách từ trên cùng */
+ right: 10px; /* Đặt khoảng cách từ bên trái */
+  z-index: 10; /* Đảm bảo tiêu đề nằm trên các phần tử khác */
+  font-size: 0.8em; /* Kích thước chữ nhỏ hơn */
+}
+
+
+/* product-detail */
+.product-detail .inner-thumb img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Bo tròn góc ảnh để tạo cảm giác mềm mại */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng nhẹ cho ảnh */
+}
+
+.product-detail .inner-title {
+  font-size: 32px;
+  margin-top: 15px;
+  font-weight: bold; /* Làm đậm tiêu đề để nổi bật hơn */
+  color: #333; /* Màu chữ tối hơn cho tiêu đề để dễ đọc */
+  line-height: 1.2; /* Cải thiện khoảng cách dòng để dễ đọc hơn */
+}
+
+.product-detail .inner-category {
+  margin-bottom: 10px;
+  font-size: 16px; /* Kích thước chữ nhỏ hơn cho danh mục */
+  color: #777; /* Màu chữ nhạt hơn cho danh mục */
+  font-style: italic; /* Làm chữ nghiêng để tạo sự khác biệt */
+}
+
+.product-detail .inner-price-new {
+  color: #28a745; /* Màu xanh lá cây cho giá mới */
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #28a745; /* Thêm đường viền dưới giá mới để nổi bật */
+  padding-bottom: 5px; /* Thêm khoảng cách dưới giá mới để làm nổi bật đường viền */
+}
+
+/* Đảm bảo rằng tất cả các phần tử khác có khoảng cách tốt */
+.product-detail {
+  padding: 20px; /* Thêm khoảng cách xung quanh nội dung */
+  background-color: #f9f9f9; /* Màu nền sáng hơn cho phần chi tiết sản phẩm */
+  border-radius: 8px; /* Bo tròn góc cho phần chi tiết sản phẩm */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ cho phần chi tiết sản phẩm */
+}
+
+
+.inner-desc {
+  font-size: 16px; /* Kích thước chữ vừa phải cho mô tả */
+  line-height: 1.6; /* Khoảng cách giữa các dòng để dễ đọc hơn */
+  color: #333; /* Màu chữ tối để tăng độ tương phản với nền sáng */
+  margin-top: 10px; /* Khoảng cách trên để phân tách với các phần tử khác */
+  margin-bottom: 20px; /* Khoảng cách dưới để phân tách với các phần tử khác */
+  padding: 15px; /* Khoảng cách bên trong để tạo không gian xung quanh văn bản */
+  background-color: #f9f9f9; /* Màu nền sáng để làm nổi bật phần mô tả */
+  border: 1px solid #ddd; /* Đường viền nhẹ để phân tách phần mô tả khỏi phần còn lại */
+  border-radius: 8px; /* Bo tròn góc của phần mô tả */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ để tạo cảm giác nổi bật */
+  overflow: hidden; /* Đảm bảo rằng nội dung không tràn ra ngoài phần mô tả */
+}
+
+/* Đảm bảo phần tiêu đề (nếu có) có kiểu dáng đồng bộ */
+.box-head {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px; /* Khoảng cách dưới để phân tách với nội dung phần mô tả */
+  color: #333;
+}

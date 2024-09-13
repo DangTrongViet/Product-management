@@ -1,11 +1,16 @@
-module.exports=(objPagination,query,countProduct)=>{
-    if(query.page){
-        objPagination.currentPage=parseInt(query.page);
-    }
+module.exports = (objPagination, query, countProduct) => {
+    // Mặc định số sản phẩm trên mỗi trang là 5
+    objPagination.limitItems = 5; 
 
-    objPagination.skip=(objPagination.currentPage-1)*objPagination.limitItems;
-    const totalPage=Math.ceil(countProduct/(objPagination.limitItems));
-    objPagination.totalPage=totalPage;
+    // Nếu có query page, lấy giá trị đó, nếu không mặc định là 1
+    objPagination.currentPage = query.page ? parseInt(query.page) : 1;
+
+    // Tính toán số sản phẩm cần bỏ qua
+    objPagination.skip = (objPagination.currentPage - 1) * objPagination.limitItems;
+
+    // Tính toán tổng số trang dựa trên tổng số sản phẩm
+    const totalPage = Math.ceil(countProduct / objPagination.limitItems);
+    objPagination.totalPage = totalPage;
 
     return objPagination;
-}
+};

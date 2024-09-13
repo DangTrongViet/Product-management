@@ -1,15 +1,19 @@
+// Đảm bảo mã chạy sau khi DOM được tải hoàn chỉnh
+document.addEventListener('DOMContentLoaded', function () {
+    // Lấy tất cả các liên kết trong menu con
+    const subMenuLinks = document.querySelectorAll('.sub-menu a');
 
-document.addEventListener('DOMContentLoaded', () => {
-    const menuItems = document.querySelectorAll('li > a');
-    console.log("hi")
-    menuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
+    // Thêm sự kiện nhấp chuột cho từng liên kết
+    subMenuLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            // Ngăn chặn hành vi mặc định của liên kết
+            event.preventDefault();
 
-            const parentLi = this.parentElement;
+            // Lấy URL của liên kết
+            const url = this.getAttribute('href');
 
-            // Toggle class 'active' để ẩn/hiện menu con
-            parentLi.classList.toggle('active');
+            // Chuyển hướng đến URL mới
+            window.location.href = url;
         });
     });
 });
