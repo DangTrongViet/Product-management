@@ -9,9 +9,9 @@ mixin product-item(item)
             .inner-content 
                 h3.inner-title 
                     a(href=`/products/detail/${item.slug}`)   #{item.title}  
-            .inner-price-new.new-price #{item.priceNew}$
+                div(class="inner-price-new") #{item.priceNew}$
                 if item.priceNew !=item.price
-                    .inner-price-old.old-price(style="text-decoration: line-through;") #{item.price}$
+                    .old-price(style="text-decoration: line-through;") #{item.price}$
                 else
                     .inner-price-old #{item.price}$
 

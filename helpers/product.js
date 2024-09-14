@@ -5,7 +5,8 @@ module.exports.priceNewProducts = (productFeatured) => {
             .toFixed(0);
         return item;
     });
-    return productFeatured;
+
+    return newProductFeatured
 }
 
 

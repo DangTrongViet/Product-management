@@ -9,18 +9,18 @@ module.exports.index = async (req, res) => {
         deleted: false,
         status: "active"
     }).limit(6);
-    const newProductFeatured = productHelper.priceNewProduct(productFeatured);
-    const newproductNew = await Product.find({
+    const newProductFeatured = productHelper.priceNewProducts(productFeatured);
+    const newproduct = await Product.find({
         deleted: false,
         status: "active"
     }).sort({ position: "desc" }).limit(6);
+    const newProductNew=productHelper.priceNewProducts(newproduct);
 
-
-    
+      
     res.render("client/pages/home/index", {
         pageTitle: "Trang chủ",
         productFeatured: newProductFeatured,
-        productNew: newproductNew
+        productNew: newProductNew,
     });
 
     // Hiển thij danh sách sp mới nhất

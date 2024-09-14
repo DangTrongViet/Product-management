@@ -7,6 +7,24 @@ header.header
                 .inner-logo
                     a(href="/")
                         img(src="/uploads/th12_ODYP.jpg", alt="Logo", width="200px",height="auto")
+            
+            .col-5 
+                form(
+                    action="/search"
+                    method="GET"
+                )
+                    div(class="form-group d-flex mb-8")
+                        input(
+                            type="text"
+                            placeholder="Nhập từ khóa..."
+                            class="form-control"
+                            name="keyword"
+                        )
+                        button(
+                            type="submit"
+                            class="btn btn-primary"
+                        ) Tìm 
+            
             .col-9 
                 .inner-menu 
                     ul 
@@ -16,5 +34,8 @@ header.header
                             -const pathProduct="/products"
                             a(href=pathProduct) Sản phẩm
                                 +sub-menu(layoutProductCategory,pathProduct)
+                        li
+                            a(href="/cart") Giỏ hàng (#{miniCart ? miniCart.totalQuantity : 0})
+
     link(rel="stylesheet", href="/css/style.css") 
     script(src="/js/script.js")
