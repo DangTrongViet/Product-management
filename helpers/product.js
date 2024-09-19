@@ -11,11 +11,12 @@ module.exports.priceNewProducts = (productFeatured) => {
 
 
 module.exports.priceNewProduct = (product) => {
-    product.priceNew = (
+    const priceNew = (
         product.price - product.price *
         (product.discountPercentage / 100))
         .toFixed(0);
-    return product.priceNew;
+
+    return parseInt(priceNew);
 }
 
 
