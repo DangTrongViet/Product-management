@@ -6,7 +6,7 @@ header.header
             .col-3 
                 .inner-logo
                     a(href="/")
-                        img(src="/uploads/th12_ODYP.jpg", alt="Logo", width="200px",height="auto")
+                        img(src=settingGeneral.logo, alt=settingGeneral.websiteName, width="200px",height="auto")
             
             .col-5 
                 form(
@@ -40,6 +40,8 @@ header.header
                         if(user)
                             li  
                                 a(href="/user/info") #{user.fullName}
+                            li  
+                                a(href="/chat") Chat
                             li  
                                 a(href="/user/logout") Đăng xuất
                         else

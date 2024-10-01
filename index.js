@@ -5,10 +5,18 @@ const flash=require("express-flash");
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const moment=require("moment");
-
+const http = require('http');
+const { Server } = require("socket.io");
 
 const bodyParser=require("body-parser");
 const app = express();
+
+// SocketIO
+const server = http.createServer(app);
+const io = new Server(server);
+global._io=io;
+// End SocketIO
+
 
 //ghi sau app
 app.use(methodOverride("_method"));
@@ -56,6 +64,14 @@ app.use('/admin/uploads', express.static(`${__dirname}/admin/uploads`));
 route(app);
 routeAdmin(app);
 
-app.listen(port, () => {
+// * là rơi vào các th còn lại
+app.get("*",(req,res) => {
+  res.render("client/pages/errors/404",{
+    pageTitle: "404 Not Found"
+  });
+
+});
+
+server.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
