@@ -191,5 +191,22 @@ socket.on("SERVER_RETURN_USER_ID_CANCEL_FRIEND", (data) => {
 
 // End SERVER_RETURN_USER_ID_CANCEL_FRIEND
 
+// SERVER_RETURN_USER_STATUS
+socket.on("SERVER_RETURN_USER_STATUS",(data) => {
+    const dataUsersFriend = document.querySelector("[data-users-friend]");
+    if (dataUsersFriend) {
+        const boxUser =dataUsersFriend.querySelector(`[user-id="${data.userId}"]`);
+        if (boxUser) {
+            boxUser.querySelector("[status]").setAttribute("status",data.status)
+        }
+    }
+});
+// End SERVER_RETURN_USER_STATUS
 
 
+// // Detect browser or tab closing
+// window.addEventListener("beforeunload",(e) =>{
+//     socket.emit("CLIENT_CLOSE_WEB", "test");
+// })
+
+// // End Detect browser or tab closing

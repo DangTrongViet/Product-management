@@ -1,13 +1,14 @@
 const Chat = require("../../models/chat.model");
 const User = require("../../models/users.model");
 const chatSocket=require("../../sockets/client/socket");
-// [GET] /chat/
+// [GET] /chat/:roomChatId
 module.exports.index = async (req, res) => {
-
-    chatSocket(res);
+    const roomChatId=req.params.roomChatId;
+    chatSocket(req,res);
 
     // Lấy data từ db
     const chats = await Chat.find({
+        room_chat_id:roomChatId,
         deleted: false
     });
     for (const chat of chats) {
