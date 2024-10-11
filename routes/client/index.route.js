@@ -7,6 +7,7 @@ const checkoutRoute=require("./checkout.route");
 const chatRoute=require("./chat.route");
 const userRoute=require("../../routes/client/user.route");
 const cartMiddleware=require("../../middlewares/client/cart.middleware");
+const usersRoute=require("./users.route");
 // để nhúng truyền app vào để lấy routes
 
 const authMiddleware=require("../../middlewares/client/auth.middleware");
@@ -24,6 +25,7 @@ module.exports=(app)=>{
     app.use("/cart",cartRoute);
     app.use("/",homeRoutes);
     app.use("/products",productRoutes);
+    app.use("/users",usersRoute);
 
     app.use("/search",searchRoute);
     app.use("/checkout",checkoutRoute)

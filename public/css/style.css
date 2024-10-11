@@ -239,15 +239,15 @@ ul.sub-menu li {
 
 /* Tin nhắn gửi (bên phải) */
 .inner-outgoing {
-  background-color: blue;
+  background-color: #e6e6e6;
   padding: 12px;
   border-radius: 12px 12px 0 12px;
   max-width: 70%;
-  color: white;
   display: inline-block;
   position: relative;
   align-self: flex-end;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+ 
 }
 
 /* Khung nhập tin nhắn */
@@ -294,15 +294,49 @@ ul.sub-menu li {
 
 /* Emoji Icon */
 .tooltip {
-  visibility:visible;
-  opacity: 1;
+  --bs-tooltip-zindex: 1080;
+  --bs-tooltip-max-width: 200px;
+  --bs-tooltip-padding-x: 0.5rem;
+  --bs-tooltip-padding-y: 0.25rem;
+  --bs-tooltip-font-size: 0.875rem;
+  --bs-tooltip-color: var(--bs-body-bg);
+  --bs-tooltip-bg: var(--bs-emphasis-color);
+  --bs-tooltip-border-radius: var(--bs-border-radius);
+  --bs-tooltip-opacity: 0.9;
+  --bs-tooltip-arrow-width: 0.8rem;
+  --bs-tooltip-arrow-height: 0.4rem;
+  z-index: var(--bs-tooltip-zindex);
+  display: none !important; /* Ẩn tooltip mặc định */
+  opacity: 0; /* Đặt opacity là 0 khi không hiển thị */
+  visibility: hidden; /* Ẩn tooltip */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Hiệu ứng chuyển tiếp cho opacity và visibility */
 }
 
-.tooltip.shown{
-  visibility: hidden;
+.tooltip.show {
+  display: block !important; /* Hiển thị tooltip khi có class 'show' */
+  opacity: var(--bs-tooltip-opacity); /* Sử dụng opacity từ biến CSS */
+  visibility: visible; /* Đặt visibility là visible khi hiển thị */
 }
+
+
 
 /*End Emoji Icon */
+
+/* Icon delete message */
+.delete-icon {
+  background: none;           /* Xóa nền của nút */
+  border: none;               /* Xóa viền của nút */
+  cursor: pointer;            /* Thay đổi con trỏ thành bàn tay khi hover */
+  margin-right: 8px;         /* Khoảng cách giữa biểu tượng và nội dung */
+ 
+}
+
+.delete-icon i {
+  color: #ccc;            /* Màu sắc của biểu tượng (đỏ) */
+  font-size: 16px;             /* Kích thước của biểu tượng */
+  left: auto;
+}
+/* End Icon delete message */
 
 
 /* box Typing */
@@ -352,3 +386,143 @@ ul.sub-menu li {
   }
 }
 /* End box Typing */
+
+.chat .inner-body .inner-images img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: #efefef;
+  padding: 10px;
+  margin: 0 5px 5px 0;
+  border-radius: 5px;
+}
+
+.chat .inner-body .inner-outgoing .inner-images{
+  margin-left:auto ;
+  text-align: right;
+}
+
+.chat .inner-body .inner-outgoing .inner-images img {
+  margin: 0 0 5px 5px;
+
+
+}
+
+
+/* Chat Upload Images */
+
+.chat .inner-preview-images{
+  position: relative;
+}
+
+.chat .inner-preview-images .label-container{
+  display:none;
+}
+
+.chat .inner-preview-images .input-container{
+  display:none;
+}
+
+
+.chat .inner-preview-images .image-preview{
+  height:auto;
+  padding: 0;
+  border-radius: 0;
+}
+
+.chat .inner-preview-images .image-preview-item{
+  width: 90px;
+  background-size: contain;
+}
+
+
+
+/* box-user */
+.box-user{
+  display: flex;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+
+}
+
+.box-user .inner-avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: #f2f2f2;
+  margin-right:10px;
+}
+
+.box-user .inner-avatar img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+.box-user .inner-info{
+  flex:1;
+}
+
+.box-user .inner-info .inner-name{
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.box-user [btn-cancel-friend]{
+  display: none;
+}
+.box-user.add [btn-add-friend]{
+  display: none;
+}
+
+.box-user.add [btn-cancel-friend]{
+  display: inline-block;
+}
+
+.box-user [btn-deleted-friend]{
+  display:none;
+}
+
+.box-user.refuse [btn-accept-friend]{
+  display:none;
+}
+
+.box-user.refuse [btn-refuse-friend]{
+  display:none;
+}
+
+.box-user.refuse [btn-deleted-friend]{
+  display:inline-block;
+}
+
+.box-user [btn-accepted-friend]{
+  display:none;
+}
+/* Khi có thêm class accepted thì ẩn đi button chấp nhận và xóa */
+.box-user.accepted [btn-accept-friend]{
+  display:none;
+}
+
+.box-user.accepted [btn-refused-friend]{
+  display:none;
+}
+/* Khi có thêm class accepted thì hiển thị button đã chấp nhận*/
+.box-user.accepted [btn-accepted-friend]{
+  display:inline-block;
+}
+
+
+.box-user .inner-status{
+  font-size: 12px;
+  color: #00d800;
+  opacity: 0;
+}
+
+.box-user .inner-status[status="online"]{
+  opacity: 1;
+}
+
+/* End box-user */
+
