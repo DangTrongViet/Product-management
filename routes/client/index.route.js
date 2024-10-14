@@ -8,6 +8,7 @@ const chatRoute=require("./chat.route");
 const userRoute=require("../../routes/client/user.route");
 const cartMiddleware=require("../../middlewares/client/cart.middleware");
 const usersRoute=require("./users.route");
+const roomsChatRoute=require("./rooms-chat.route");
 // để nhúng truyền app vào để lấy routes
 
 const authMiddleware=require("../../middlewares/client/auth.middleware");
@@ -22,7 +23,7 @@ module.exports=(app)=>{
 
     app.use("/user",userRoute);
     app.use("/chat",authMiddleware.requireAuth,chatRoute);
-    
+    app.use("/rooms-chat",roomsChatRoute);
     app.use("/cart",cartRoute);
     app.use("/",homeRoutes);
     app.use("/products",productRoutes);

@@ -1,0 +1,31 @@
+extends ../../layouts/default
+include ../../mixins/box-head.pug
+block main 
+    .container.my-3 
+        .row 
+            .col-12 
+                +box-head("Danh sách phòng")
+        .row.mb-3 
+            .col-12 
+                a(
+                    href="/rooms-chat/create"
+                    class="btn btn-sm btn-success mr-1"
+                ) Tạo phòng chat
+        .row
+            .col-6
+                each roomChat in listRoomChat 
+                    .col-6
+                        div(class="box-room")
+                            div(class="inner-avatar")
+                                img(
+                                    src=`https://png.pngtree.com/png-vector/20191130/ourlarge/pngtree-group-chat-icon-png-image_2054401.jpg`
+                                    alt=roomChat.title
+                                )
+                        div(class="inner-info")
+                            div( class="inner-name") #{roomChat.title}
+                            div(class="inner-buttons")
+                                a(
+                                    href=`/chat/${roomChat.id}`
+                                    class="btn btn-sm btn-primary mr-1"
+                                ) Nhắn tin
+
